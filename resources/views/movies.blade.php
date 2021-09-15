@@ -7,9 +7,17 @@
     <title>Movies | Adapti</title>
 </head>
 <body>
+<<<<<<< HEAD
     @foreach ($movies as $movie)
         <h4>{{ $movie->title }}</h4>
         <img src="{{ $movie->image }}" alt="Imagem"/>
+=======
+    <a href="{{route('movie.create')}}"><button>Criar</button></a>
+    @foreach ($movies as $movie)
+        <h4>{{ $movie->title }}</h4>
+        <img src="storage/{{ $movie->image }}" alt="Imagem"width="60"height="100"/>
+        <a href="{{route('movie.edit',$movie->id)}}">Editar</a>
+>>>>>>> 2f454e3 (Meu terceiro commit)
     @endforeach
 </body>
 </html>

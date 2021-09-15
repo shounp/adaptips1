@@ -1,8 +1,16 @@
 <?php
 
 namespace App\Http\Controllers;
+<<<<<<< HEAD
 use App\Models\Movie;
 use Illuminate\Http\Request;
+=======
+
+use App\Models\Country;
+use App\Models\Movie;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+>>>>>>> 2f454e3 (Meu terceiro commit)
 
 class MovieController extends Controller
 {
@@ -25,7 +33,12 @@ class MovieController extends Controller
      */
     public function create()
     {
+<<<<<<< HEAD
         //
+=======
+        $countries = Country::all();
+        return view('createmovie',compact('countries'));
+>>>>>>> 2f454e3 (Meu terceiro commit)
     }
 
     /**
@@ -36,7 +49,14 @@ class MovieController extends Controller
      */
     public function store(Request $request)
     {
+<<<<<<< HEAD
         //
+=======
+        $data = $request->all();
+        $data['image'] = $request->file('image')->store('movies','public');
+        $movie = Movie::create($data);
+        return redirect(route('movie.index'));
+>>>>>>> 2f454e3 (Meu terceiro commit)
     }
 
     /**
@@ -58,7 +78,13 @@ class MovieController extends Controller
      */
     public function edit($id)
     {
+<<<<<<< HEAD
         //
+=======
+        $movie = Movie::find($id);
+        $countries = Country::all();
+        return view('editarmovie',compact('movie','countries'));
+>>>>>>> 2f454e3 (Meu terceiro commit)
     }
 
     /**
@@ -70,7 +96,18 @@ class MovieController extends Controller
      */
     public function update(Request $request, $id)
     {
+<<<<<<< HEAD
         //
+=======
+        $data = $request->all();
+        $movie = Movie::find($id);
+        if($request->hasFile('image')){
+            Storage::delete('public/'.$movie->image);
+            $data['image']=$request->file('image')->store('movies','public');
+        }
+        $movie->update($data);
+        return redirect(route('movie.index'));
+>>>>>>> 2f454e3 (Meu terceiro commit)
     }
 
     /**
